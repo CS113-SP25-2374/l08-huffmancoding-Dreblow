@@ -27,3 +27,55 @@ only allowed symbols: space ( ), tab (\t), newline (\n), exclamation mark (!), p
 > ***PRO-TIPS:***
 > - A thorough explanation of a Huffman tree can be found on Canvas
 > - for(char c : string.toCharArray()) // this is your friend
+
+## Example ##
+```
+// Professor Horton
+//
+// p = 1    1101
+// f = 1    1100
+// e = 1    0101
+// h = 1    0100
+// t = 1    0111
+// n = 1    1111
+// s = 2    1110
+// r = 2    00
+// o = 4    10
+// _ = 1    0110
+//
+//        16
+//      /    \
+//     7      9
+//    r       o
+//   / \     / \
+//  2   2   2   3
+// H   e   _   t
+//         f   p s n
+```
+
+## Personal to Student ##
+```
+// Derek Dreblow
+//
+// b = 1    1001
+// w = 1    1111
+// k = 1    1100
+// l = 1    1101
+// o = 1    1110
+// d = 2    101
+// r = 2    00
+// e = 3    01
+// _ = 1    1000
+//
+//               13
+//             /    \
+//            3       10
+//            e     /     \
+//                4        6
+//             /  \      /   \
+//           2     2    r     4
+//         /  \   /  \       /  \
+//        b  ( ) k    l     2    d
+//                         / \
+//                        o   w
+```
