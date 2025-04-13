@@ -5,18 +5,23 @@ public class Main {
         String message = "Professor Horton";
         String encoded = huffmanCoding.encode(message);
         String key = huffmanCoding.getKey();
-        System.out.println(encoded);
+        System.out.println("Encoded: " + encoded);
+        System.out.println("key: " + key);
 
-        String decoded = huffmanCoding.decode(encoded);
-        System.out.println(decoded);
+        HuffmanTreeDAD decoder = new HuffmanTreeDAD(key);
+        String decoded = decoder.decode(encoded);
+        System.out.println("Decoded: " + decoded);
 
-
+        System.out.println("");
 
         message = "Derek Dreblow";
         encoded = huffmanCoding.encode(message);
-        System.out.println(encoded);
+        key = huffmanCoding.getKey();
+        System.out.println("Encoded: " + encoded);
+        System.out.println("key: " + key);
 
-        decoded = huffmanCoding.decode(encoded);
-        System.out.println(decoded);
+        HuffmanTreeDAD decoderDAD = new HuffmanTreeDAD(key);
+        String decodedDAD = decoderDAD.decode(encoded);
+        System.out.println("Decoded: " + decodedDAD);
     }
 }

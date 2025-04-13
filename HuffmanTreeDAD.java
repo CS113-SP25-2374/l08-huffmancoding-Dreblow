@@ -50,10 +50,15 @@ public class HuffmanTreeDAD implements HuffmanInterface {
     private List<HuffmanCode> codes;
 
     // Constructor
+    public HuffmanTreeDAD() {
+        root = null;
+        codes = new ArrayList<>();
+    }
+
     public HuffmanTreeDAD(String key) {
         root = null;
         codes = new ArrayList<>();
-        generateKeyFromTree(key);
+        generateTreeFromKey(key);
     }
 
     // Public Methods
@@ -120,19 +125,37 @@ public class HuffmanTreeDAD implements HuffmanInterface {
 
     public String getKey() {
 
-        return "";
+        return generateKeyFromTree(root, "");
     }
 
-    public void generateKeyFromTree(String key) {
+    public void generateTreeFromKey(String key) {
+        root = new HuffmanNode(-1, '0');
+        HuffmanNode node = root;
+        boolean leaf = false;
 
-    }
-
-    public String generateKeyFromTree (HuffmanNode node, String key) {
-        if (node == null) { return ""; }
-        
-        String output = "";
-
-        return "";
+        for(char c : key.toCharArray()) {
+            if (leaf) {
+                leaf = false;
+                node.value = c;
+                node = root;
+                continue;
+            }
+            if (c == '0') {
+                if (node.left == null) {
+                    node.left = new HuffmanNode(-1, '0');
+                }
+                node = node.left;
+            }
+            if (c == '1') {
+                if (node.right == null) {
+                    node.right = new HuffmanNode(-1, '0');
+                }
+                node = node.right;
+            }
+            if (c == ':') {
+                leaf = true;
+            }
+        }
     }
 
     // Private Methods
@@ -154,6 +177,19 @@ public class HuffmanTreeDAD implements HuffmanInterface {
             }
         }
         return "";
+    }
+
+    private  String generateKeyFromTree (HuffmanNode node, String codes) {
+        if (node == null) { return ""; }
+
+        if (node.isLeaf()) {
+            return codes + ":" + node.value;
+        }
+
+        String left = generateKeyFromTree(node.left, codes + "0");
+        String right = generateKeyFromTree(node.right, codes + "1");
+
+        return left + right;
     }
     
 }
